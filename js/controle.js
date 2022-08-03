@@ -3,6 +3,26 @@ let input = document.getElementById('inputTarefa');
 let btnAdd = document.getElementById('btn-add');
 let main = document.getElementById('areaLista');
 
+verificaTarefaSalva();
+
+function verificaTarefaSalva() {
+  if (localStorage.getItem("tarefa") != []) {
+    let tarefas = localStorage.getItem("tarefa");
+    let listaDeTarefas = JSON.parse(tarefas);
+    for (let tarefasNovas of listaDeTarefas) {
+      addTarefaSalva(tarefasNovas)
+    }
+  }
+}
+
+function addTarefaSalva(tarefa) {
+
+  ++contador2;
+
+  let novoItem = tarefa;
+
+  main.innerHTML += novoItem;
+}
 
 function addTarefa() {
   let valorInput = input.value;
@@ -29,9 +49,28 @@ function addTarefa() {
   }
 }
 
+function salvarDados() {
+  let dadosDiv = document.querySelectorAll('#areaLista')
+  const dados = [];
+
+  for (let tarefa of dadosDiv) {
+    tarefaTexto = tarefa.innerHTML;
+    dados.push(tarefaTexto);
+  }
+
+  const salvarJson = JSON.stringify(dados);
+  salvarDadoLocal(salvarJson);
+}
+
+function salvarDadoLocal(valor) {
+  localStorage.setItem('tarefa', valor);
+
+}
+
 function deletar(id) {
   var tarefa = document.getElementById(id);
   tarefa.remove();
+  salvarDados()
 }
 
 function marcarTarefa(id) {
@@ -47,6 +86,7 @@ function marcarTarefa(id) {
     icone.classList.add('mdi-checkbox-marked-circle');
 
     item.parentNode.appendChild(item);
+    salvarDados()
 
   } else {
     item.classList.remove('clicado');
@@ -56,6 +96,8 @@ function marcarTarefa(id) {
     icone.classList.remove('mdi-checkbox-marked-circle');
 
     icone.classList.add('mdi-circle-outline');
+    
+    salvarDados()
 
   }
 }
@@ -65,5 +107,11 @@ input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     btnAdd.click();
+    salvarDados()
   }
+})
+
+btnAdd.addEventListener("click", () => {
+  addTarefa()
+  salvarDados()
 })
