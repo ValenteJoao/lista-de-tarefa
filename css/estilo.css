@@ -106,6 +106,8 @@ main {
 @media (max-width: 600px) {
   .item {
     height: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 }
 
@@ -178,6 +180,15 @@ main {
   margin-bottom: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .item.clicado {
+    height: 100%;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
 }
 
 .item.clicado .item-nome {
