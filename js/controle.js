@@ -6,11 +6,11 @@ let main = document.getElementById('areaLista');
 verificaTarefaSalva();
 
 function verificaTarefaSalva() {
-  if (localStorage.getItem("tarefa") != []) {
+  if (localStorage.getItem("tarefa") != [] && localStorage.getItem("tarefa") != null) {
     let tarefas = localStorage.getItem("tarefa");
     let listaDeTarefas = JSON.parse(tarefas);
     for (let tarefasNovas of listaDeTarefas) {
-      addTarefaSalva(tarefasNovas)
+      addTarefaSalva(tarefasNovas);
     }
   }
 }
@@ -96,7 +96,7 @@ function marcarTarefa(id) {
     icone.classList.remove('mdi-checkbox-marked-circle');
 
     icone.classList.add('mdi-circle-outline');
-    
+
     salvarDados()
 
   }
