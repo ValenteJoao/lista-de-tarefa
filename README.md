@@ -41,4 +41,4 @@ A Lista de Tarefas está hospedada no GitHub Pages e pode ser acessada através 
 
 No momento, a Lista de Tarefas é um projeto desenvolvido por João Valente e não está aberto para contribuições externas.
 
-Agradecemos por utilizar a Lista de Tarefas e esperamos que ela seja útil para o gerenciamento eficiente das suas tarefas diárias!
+Agradecemos por utilizar a Lista de Tarefas e esperamos que ela seja útil para o gerenciamento eficiente das suas tarefas diárias.
